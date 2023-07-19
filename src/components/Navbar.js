@@ -17,7 +17,7 @@ export default function Navbar()
   }
   return (
      <>
-     <div className='py-6 px-3 text-slate-900 max-md:hidden'>
+     <div className='py-6 px-3 font-medium text-slate-900 max-md:hidden shadow-lg'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
             <h2 className='text-3xl ml-4 max-lg:text-2xl font-semibold'>Blog App</h2>
@@ -31,7 +31,7 @@ export default function Navbar()
               {!isLogged ? (
                 <Link to='/login'><button className='bg-slate-900 text-white py-2 px-6 rounded-md max-lg:py-1'>Login</button></Link>
               ) : (<div className='flex items-center'>
-                <p>Bibhav Shrestha</p>
+                <p>{auth.currentUser.displayName}</p>
                 <button onClick = {signUserOut} className='bg-slate-900 text-white py-2 px-6 rounded-md ml-6 max-lg:py-1'>Log out</button>
               </div>) }
           </div>
