@@ -1,21 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase-config';
+import React, { useContext, useEffect} from 'react';
 import { LogContext } from './LogContext';
- 
-export default function Home() {
-  const [posts, setPosts] = useState([]);
-  const postsRef = collection(db, "Blogs");
-  const [isLogged] = useContext(LogContext);
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
+export default function Home({posts}) {
+  const [isLogged] = useContext(LogContext);
+  
   useEffect(()=>{
-    const getData = async () =>{
-      const data = await getDocs(postsRef);
-      let docsData = data.docs.map(doc => ({...doc.data(), id: doc.id}));
-      setPosts(docsData);
-    }
-    getData();
-  }, []);
+    AOS.init({duration: 1500, once: true})
+  }, [])
 
   return (
     <>
@@ -24,11 +17,12 @@ export default function Home() {
       <div className='flex flex-col items-center'>
           {posts.map((post, key) =>{
             return (
-              <div className='rounded-xl shadow-xl w-1/2 mb-8 p-8 flex flex-col' key={key}>
+              <div className='rounded-xl shadow-xl w-1/2 mb-8 p-8 flex flex-col' key={key} data-aos = 'fade-up'>
                  <div className='flex justify-between items-center'>
                    <h1 className='leading-tight text-5xl font-medium '>{post.title}</h1>
                  </div>
                  <span className='mt-4 text-xl text-slate-700'>@{post.writer.name}</span>
+                 <span className='mt-4 text-base text-slate-700 '>{Math.round((post.content.split(" ")).length * 0.008)} min read</span>
                  <p className='post max-h-[22rem] text-lg mt-8 text-justify overflow-auto pt-3 pr-3'>{post.content}</p>
               </div>
             )
