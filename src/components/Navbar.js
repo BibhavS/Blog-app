@@ -21,7 +21,10 @@ export default function Navbar()
      <div className='py-6 px-3 font-medium text-slate-900 max-md:hidden shadow-lg'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
-            <h2 className='text-3xl ml-4 max-lg:text-2xl font-semibold'>Bloggy</h2>
+             <div className='flex flex-col'>  
+              <h2 className='text-4xl ml-4 max-lg:text-2xl font-semibold'>Bloggy</h2>
+              <h2 className='text-[0.8rem] ml-4 max-lg:text-xl font-lg mt-2'>By Bibhav Shrestha</h2>
+             </div>
             <div className='flex ml-16 text-xl max-lg:text-[0.9rem] max-lg:ml-8 max-lg:gap-4 gap-10'>
               <Link to='/'><h3>Home</h3></Link>
               {isLogged ? (<Link to='/writeblog'><h3>Write a blog</h3></Link>) : null}
