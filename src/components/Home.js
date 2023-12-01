@@ -13,7 +13,7 @@ export default function Home({posts}) {
   return (
     <>
     <div className='mt-10'>
-      {!isLogged ? (<h4 className='text-center font-medium mb-8 text-2xl text-red-600'>You need to sign in to post your blog</h4>): null}
+      {!isLogged ? (<h4 className='text-center font-medium mb-8 text-2xl text-red-600'>You need to sign in to post blogs</h4>): null}
       <div className='flex flex-col items-center'>
           {posts.map((post, key) =>{
             return (
